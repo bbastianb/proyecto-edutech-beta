@@ -14,6 +14,7 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class ProveedorService {
 
+   
     @Autowired
     private ProveedorRepository proveedorRepository;
 
@@ -47,22 +48,6 @@ public class ProveedorService {
 
     public List<Proveedor> buscarPorServicio(String servicio) {
         return proveedorRepository.findByServicio(servicio);
-    }
-
-    public List<Proveedor> buscarPorTiempoRespuestaMaximo(Integer maxHoras) {
-        return proveedorRepository.findByTiempoRespuestaHorasLessThanEqual(maxHoras);
-    }
-
-    public List<Proveedor> buscarPorCondicionesMinimas(Double minCondicion) {
-        return proveedorRepository.findByCondicionesContratoMinimas(minCondicion);
-    }
-
-    public List<Proveedor> buscarPorNombre(String nombre) {
-        return proveedorRepository.buscarPorNombreSimilar(nombre);
-    }
-
-    public List<Object[]> obtenerEstadisticasTiempoRespuesta() {
-        return proveedorRepository.findAvgTiempoRespuestaByServicio();
     }
 
     public Proveedor actualizarCondicionesContrato(Long id, String nuevasCondiciones) {
